@@ -5,3 +5,4 @@ Cargo.lock
 cpp/tipb/*.h
 cpp/tipb/*.cc
 cpp/build/
+protoc

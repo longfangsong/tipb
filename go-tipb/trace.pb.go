@@ -4,17 +4,23 @@
 package tipb
 
 import (
-	"fmt"
-
-	proto "github.com/golang/protobuf/proto"
-
+	fmt "fmt"
 	math "math"
+
+	_ "github.com/gogo/protobuf/gogoproto"
+	proto "github.com/golang/protobuf/proto"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type Event int32
 
@@ -37,6 +43,7 @@ var Event_name = map[int32]string{
 	1004: "TiKvCoprExecuteDagRunner",
 	1005: "TiKvCoprExecuteBatchDagRunner",
 }
+
 var Event_value = map[string]int32{
 	"Unknown":                       0,
 	"TiKvCoprGetRequest":            1000,
@@ -52,9 +59,11 @@ func (x Event) Enum() *Event {
 	*p = x
 	return p
 }
+
 func (x Event) String() string {
 	return proto.EnumName(Event_name, int32(x))
 }
+
 func (x *Event) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(Event_value, data, "Event")
 	if err != nil {
@@ -63,15 +72,18 @@ func (x *Event) UnmarshalJSON(data []byte) error {
 	*x = Event(value)
 	return nil
 }
-func (Event) EnumDescriptor() ([]byte, []int) { return fileDescriptorTrace, []int{0} }
+
+func (Event) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_0571941a1d628a80, []int{0}
+}
 
 func init() {
 	proto.RegisterEnum("tipb.Event", Event_name, Event_value)
 }
 
-func init() { proto.RegisterFile("trace.proto", fileDescriptorTrace) }
+func init() { proto.RegisterFile("trace.proto", fileDescriptor_0571941a1d628a80) }
 
-var fileDescriptorTrace = []byte{
+var fileDescriptor_0571941a1d628a80 = []byte{
 	// 241 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x2e, 0x29, 0x4a, 0x4c,
 	0x4e, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x29, 0xc9, 0x2c, 0x48, 0x92, 0x12, 0x49,
