@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package tipb;
+
+option java_multiple_files = true;
+option java_package = "com.pingcap.tidb.tipb";
+
+import "gogoproto/gogo.proto";
+import "google/protobuf/empty.proto";
+
+option (gogoproto.marshaler_all) = true;
+option (gogoproto.sizer_all) = true;
+option (gogoproto.unmarshaler_all) = true;
+
+// LockViewAgent is the persistent agent service for LockView records
+service LockViewAgent {
+    // ReportTopSQLRecords is called periodically (e.g. per minute) to save the in-memory Trx records
+    rpc ReportTrxRecords(stream TrxRecord) returns (google.protobuf.Empty) {}
+}
+
+message TrxRecord {
+    uint64 id = 1;
+    repeated bytes sql_digests = 2;
+}
